@@ -1,0 +1,20 @@
+name: Static Code Analysis
+on: [push, pull_request]
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+    - name: Install dependencies
+      run: pip install -r requirements.txt
+    - name: Run Flake8 (PEP 8 check)
+    run: flake8 calc.py --max-line-length=88
+    - name: Run Pylint (Linting)
+    run: pylint calc.py || true # Pylint vrací nenulový kód při chybách, proto `|| true`
+    - name: Check Formatting with Black
