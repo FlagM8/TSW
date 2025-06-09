@@ -1,0 +1,6 @@
+<h2>Form</h2>
+<form method="post">
+  Name: <input type="text" name="name" value="{{ request.form.name or '' }}"><br>
+  Email: <input type="email" name="email" value="{{ request.form.email or '' }}"><br>
+  <input type="submit" value="Submit">
+</form>

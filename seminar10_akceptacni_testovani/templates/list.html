@@ -1,0 +1,7 @@
+<h2>Nejaký list</h2>
+<ul>
+  {% for entry in entries %}
+    <li>{{ entry.name }} - {{ entry.email }}</li>
+  {% endfor %}
+</ul>
+<a href="/form">Zpet</a>

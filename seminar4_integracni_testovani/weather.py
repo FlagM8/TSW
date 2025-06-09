@@ -8,8 +8,7 @@ class WeatherClient:
 
     async def fetch_weather(self, city: str) -> dict:
         async with httpx.AsyncClient() as client:
-            # Mocknuté URL pro testy
-            response = await client.get(f"https://api.weather.mock/{city}")
+            response = await client.get(f"https://nejakeapi.pocasi/{city}")
             return response.json()
 
     async def fetch_all(self) -> dict:

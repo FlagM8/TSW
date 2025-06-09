@@ -10,7 +10,7 @@ def test_search_product(driver):
     search_box.send_keys("iPhone 15")
     search_box.send_keys(Keys.RETURN)
     results = driver.find_elements(By.CLASS_NAME, "browsinglink")
-    assert any("iPhone 15" in result.text for result in results), "Produkt 'iPhone 13' nebyl nalezen ve výsledcích vyhledávání."
+    assert any("iPhone 15" in result.text for result in results), "Produkt 'iPhone 15' nebyl nalezen ve výsledcích vyhledávání."
 
 def test_product_price(driver):
     driver.get("https://www.alza.cz/")
@@ -29,7 +29,7 @@ def test_product_price(driver):
             prices.append(price)
         except ValueError:
             continue
-    assert all(p >= 15000 for p in prices), f"Nalezena cena pod 15000 Kč! Nalezené ceny: {prices}"
+    assert all(p >= 15000 for p in prices), f"Za tu cenu je to krádež! Nalezené ceny: {prices}"
 
 def test_add_to_cart(driver):
     driver.get("https://www.alza.cz/")

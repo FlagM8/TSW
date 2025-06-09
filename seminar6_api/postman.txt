@@ -1,0 +1,35 @@
+post - http://127.0.0.1:5000/api/items
+pm.test("Status code is 201", function () {
+    pm.response.to.have.status(201);
+});
+pm.environment.set("itemId", pm.response.json().id);
+body:
+{
+  "name": "Pineapple",
+  "price": 20
+}
+
+
+get - http://127.0.0.1:5000/api/items/2
+
+pm.test("Item was retrieved", function () {
+    pm.response.to.have.status(200);
+    pm.expect(pm.response.json().name).to.eql("Apple");
+});
+
+delete - http://127.0.0.1:5000//api/items/3
+
+pm.test("Item deleted", function () {
+    pm.response.to.have.status(200);
+});
+
+put - http://127.0.0.1:5000//api/items/2
+pm.test("Item was updated", function () {
+    pm.response.to.have.status(200);
+    pm.expect(pm.response.json().name).to.eql("Banana");
+});
+body:
+{
+  "name": "Banana",
+  "price": 15
+}

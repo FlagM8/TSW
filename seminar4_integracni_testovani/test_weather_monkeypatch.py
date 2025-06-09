@@ -14,3 +14,4 @@ async def test_fetch_weather_monkeypatch(monkeypatch):
 
     for city in client.cities:
         assert data[city]["temp"] == 42
+        assert data[city]["city"] == city
